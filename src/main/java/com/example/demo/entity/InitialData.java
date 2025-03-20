@@ -1,77 +1,35 @@
 package com.example.demo.entity;
 
 import java.util.List;
+import java.util.Optional;
 
 public class InitialData {
-	private String user_id;
-	private String photo;
-	private String name;
-	private Integer spent;
-	private Integer debt;
-	private List<Friends> friends;
+	private Optional<User> userData;
+	private List<Friend> connections;
 
-	public String getUser_id() {
-		return user_id;
+	public InitialData(Optional<User> userData2, List<Friend> connections) {
+		this.userData = userData2;
+		this.connections = connections;
 	}
 
-	public void setUser_id(String user_id) {
-		this.user_id = user_id;
+	public Optional<User> getUserData() {
+		return userData;
 	}
 
-	public String getPhoto() {
-		return photo;
+	public void setUserData(Optional<User> userData) {
+		this.userData = userData;
 	}
 
-	public void setPhoto(String photo) {
-		this.photo = photo;
+	public List<Friend> getConnections() {
+		return connections;
 	}
 
-	public String getName() {
-		return name;
-	}
-
-	public void setName(String name) {
-		this.name = name;
-	}
-
-	public Integer getSpent() {
-		return spent;
-	}
-
-	public void setSpent(Integer spent) {
-		this.spent = spent;
-	}
-
-	public Integer getDebt() {
-		return debt;
-	}
-
-	public void setDebt(Integer debt) {
-		this.debt = debt;
-	}
-
-	public List<Friends> getFriends() {
-		return friends;
-	}
-
-	public void setFriends(List<Friends> friends) {
-		this.friends = friends;
+	public void setConnections(List<Friend> connections) {
+		this.connections = connections;
 	}
 
 	public InitialData() {
 		super();
 		// TODO Auto-generated constructor stub
 	}
-
-	public InitialData(String user_id, String photo, String name, Integer spent, Integer debt) {
-		super();
-		this.user_id = user_id;
-		this.photo = photo;
-		this.name = name;
-		this.spent = spent;
-		this.debt = debt;
-		// this.friends = friends;
-	}
-	
-	
 }
