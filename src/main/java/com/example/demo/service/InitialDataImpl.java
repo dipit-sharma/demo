@@ -33,4 +33,10 @@ public class InitialDataImpl implements InitialDataService {
 		return new InitialData(userData, friends);
 	}
 
+	@Override
+	public List<Friend> getConnection(String userId) {
+		List<Friend> friends = friendDao.findByUserId(userId);
+		return friends;
+	}
+
 }
