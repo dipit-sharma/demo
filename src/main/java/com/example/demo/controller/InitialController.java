@@ -23,6 +23,7 @@ public class InitialController {
 	@Autowired
 	private InitialDataService initDataService;
 
+	@Autowired
 	private AddDataService addDataService;
 
 	@GetMapping("/initial-data/{user_id}")
@@ -37,6 +38,6 @@ public class InitialController {
 
 	@PostMapping("/add-expense")
 	public AddDataRes addExpense(@RequestBody Expense expense) {
-		return this.addDataService.addExpense();
+		return this.addDataService.addExpense(expense);	
 	}
 }

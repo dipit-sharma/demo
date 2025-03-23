@@ -27,10 +27,10 @@ public class AddDataRes {
 		super();
 		// TODO Auto-generated constructor stub
 	}
-	public AddDataRes(String error, String message, Boolean success) {
+	public AddDataRes(Expense expense) {
 		super();
-		this.error = error;
-		this.message = message;
-		this.success = success;
+		this.error = expense.getExpense_id() != null ? null : "Something Went wrong";
+		this.message = expense.getExpense_id() != null ? "Successfully updated" : "Something Went wrong";
+		this.success = expense.getExpense_id() != null;
 	}
 }
