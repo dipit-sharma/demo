@@ -38,6 +38,9 @@ public class InitialController {
 
 	@PostMapping("/add-expense")
 	public AddDataRes addExpense(@RequestBody Expense expense) {
-		return this.addDataService.addExpense(expense);	
+		// get all connections with connection ID == expense.connectionId
+		// if expense_type == E then split amount equally
+		// update all the connections
+		return this.addDataService.addExpense(expense);
 	}
 }

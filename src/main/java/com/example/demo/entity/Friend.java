@@ -15,7 +15,7 @@ public class Friend {
 	@Column(name = "connection_id")
 	private String connectionId;
 
-	@Column(name = "connection_to")
+	@Column(name = "connected_to")
 	private String connectedTo;
 
 	@Column(name = "connected_to_name")

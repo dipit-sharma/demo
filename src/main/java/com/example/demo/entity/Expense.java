@@ -1,5 +1,6 @@
 package com.example.demo.entity;
 
+import java.util.List;
 
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
@@ -14,28 +15,30 @@ public class Expense {
 	@Id
 	@Column(name = "expense_id")
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	private Long expense_id;  // Auto-incremented ID
-	
+	private Long expense_id; // Auto-incremented ID
+
 	@Column(name = "amount")
-    private int amount;
-	
+	private int amount;
+
 	@Column(name = "paid_by")
-    private String paid_by;
-	
+	private String paid_by;
+
 	@Column(name = "split_type")
-    private String split_type;
-	
+	private String split_type;
+
 	@Column(name = "expense_date")
-    private String expense_date;
-	
+	private String expense_date;
+
 	@Column(name = "icon")
-    private String icon;
-	
+	private String icon;
+
 	@Column(name = "description")
-    private String description;
-	
+	private String description;
+
 	@Column(name = "connection_id")
-    private String connection_id;
+	private String connection_id;
+
+	private List<String> userIds;
 
 	public Expense(int amount, String paid_by, String split_type, String expense_date, String icon,
 			String description, String connection_id) {
@@ -117,5 +120,13 @@ public class Expense {
 	public void setConnection_id(String connection_id) {
 		this.connection_id = connection_id;
 	}
-	
+
+	public List<String> getUserIds() {
+		return userIds;
+	}
+
+	public void setUserIds(List<String> userIds) {
+		this.userIds = userIds;
+	}
+
 }

@@ -1,11 +1,14 @@
 package com.example.demo.entity;
 
+import java.util.Optional;
+
 import jakarta.persistence.*;
 
 @Entity
 @Table(name = "users")
 public class User {
 	@Id
+	@Column(name = "user_id")
 	private String user_id;
 	private String photo;
 	private String name;
@@ -21,7 +24,7 @@ public class User {
 		this.debt = debt;
 	}
 
-	public User() {
+	public User(Optional<User> userData) {
 		super();
 		// TODO Auto-generated constructor stub
 	}
