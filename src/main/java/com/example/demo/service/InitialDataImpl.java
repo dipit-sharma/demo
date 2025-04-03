@@ -6,9 +6,10 @@ import java.util.Optional;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import com.example.demo.dao.FriendDao;
+import com.example.demo.dao.ConnectionDao;
+import com.example.demo.dao.ExpenseParticiapantDao;
 import com.example.demo.dao.UserDao;
-import com.example.demo.entity.Friend;
+import com.example.demo.entity.AmountOwed;
 import com.example.demo.entity.InitialData;
 import com.example.demo.entity.User;
 
@@ -17,9 +18,13 @@ public class InitialDataImpl implements InitialDataService {
 	// InitialData data;
 	@Autowired
 	private UserDao userDao;
-
+	
 	@Autowired
-	private FriendDao friendDao;
+	private ExpenseParticiapantDao epDao;
+	
+	@Autowired
+	 private ConnectionDao connectionDao;
+
 
 	public InitialDataImpl() {
 
@@ -28,15 +33,15 @@ public class InitialDataImpl implements InitialDataService {
 	@Override
 	public InitialData getInitialData(String userId) {
 		Optional<User> userData = userDao.findById(userId);
-		List<Friend> friends = friendDao.findByUserId(userId);
+		// List<AmountOwed> connections = epDao.findOwedAmounts("9876543210");
 
-		return new InitialData(userData, friends);
+		return new InitialData(userData, connections);
 	}
 
 	@Override
-	public List<Friend> getConnection(String userId) {
-		List<Friend> friends = friendDao.findByUserId(userId);
-		return friends;
+	public List<User> getConnection(String userId) {
+		List<User> connections = connectionDao.findConnectedUsers(userId);
+		return connections;
 	}
 
 }

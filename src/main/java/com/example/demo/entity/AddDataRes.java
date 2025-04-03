@@ -1,6 +1,5 @@
 package com.example.demo.entity;
 
-import java.util.List;
 
 public class AddDataRes {
 	private String error;
@@ -43,10 +42,4 @@ public class AddDataRes {
 		this.success = expense.getExpense_id() != null;
 	}
 
-	public AddDataRes(List<Friend> friends) {
-		super();
-		this.error = friends.size() == 0 ? "SWR" : null;
-		this.message = friends != null ? "Successfully updated" : "Something Went wrong";
-		this.success = friends != null;
-	}
 }

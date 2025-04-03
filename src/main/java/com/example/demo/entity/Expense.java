@@ -1,9 +1,12 @@
 package com.example.demo.entity;
 
-import java.util.List;
+import java.math.BigDecimal;
+import java.time.LocalDateTime;
 
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
+import jakarta.persistence.EnumType;
+import jakarta.persistence.Enumerated;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
@@ -18,16 +21,19 @@ public class Expense {
 	private Long expense_id; // Auto-incremented ID
 
 	@Column(name = "amount")
-	private int amount;
+	private BigDecimal amount;
 
+//	@ManyToOne
+//	@JoinColumn(name = "paid_by", nullable = false)
 	@Column(name = "paid_by")
 	private String paid_by;
 
-	@Column(name = "split_type")
-	private String split_type;
+	@Enumerated(EnumType.STRING)
+	@Column(name = "split_type", nullable = false)
+	private SplitType split_type;
 
 	@Column(name = "expense_date")
-	private String expense_date;
+	private LocalDateTime expense_date = LocalDateTime.now();
 
 	@Column(name = "icon")
 	private String icon;
@@ -35,29 +41,24 @@ public class Expense {
 	@Column(name = "description")
 	private String description;
 
+//	@ManyToOne
+//    @JoinColumn(name = "connection_id", referencedColumnName = "connection_id")
 	@Column(name = "connection_id")
 	private String connection_id;
 
-	private List<String> userIds;
 
-	public Expense(int amount, String paid_by, String split_type, String expense_date, String icon,
-			String description, String connection_id) {
-		super();
-		this.amount = amount;
-		this.paid_by = paid_by;
-		this.split_type = split_type;
-		this.expense_date = expense_date;
-		this.icon = icon;
-		this.description = description;
-		this.connection_id = connection_id;
-	}
+	 // Constructors
+    public Expense() {}
 
-	public Expense() {
-		super();
-		// TODO Auto-generated constructor stub
-	}
-
-	public Long getExpense_id() {
+    public Expense(BigDecimal amount, String paidBy, SplitType splitType, String description, String group) {
+        this.amount = amount;
+        this.paid_by = paidBy;
+        this.split_type = splitType;
+        this.description = description;
+        this.connection_id = group;
+    }
+    
+    public Long getExpense_id() {
 		return expense_id;
 	}
 
@@ -65,11 +66,11 @@ public class Expense {
 		this.expense_id = expense_id;
 	}
 
-	public int getAmount() {
+	public BigDecimal getAmount() {
 		return amount;
 	}
 
-	public void setAmount(int amount) {
+	public void setAmount(BigDecimal amount) {
 		this.amount = amount;
 	}
 
@@ -81,19 +82,19 @@ public class Expense {
 		this.paid_by = paid_by;
 	}
 
-	public String getSplit_type() {
+	public SplitType getSplit_type() {
 		return split_type;
 	}
 
-	public void setSplit_type(String split_type) {
+	public void setSplit_type(SplitType split_type) {
 		this.split_type = split_type;
 	}
 
-	public String getExpense_date() {
+	public LocalDateTime getExpense_date() {
 		return expense_date;
 	}
 
-	public void setExpense_date(String expense_date) {
+	public void setExpense_date(LocalDateTime expense_date) {
 		this.expense_date = expense_date;
 	}
 
@@ -119,14 +120,6 @@ public class Expense {
 
 	public void setConnection_id(String connection_id) {
 		this.connection_id = connection_id;
-	}
-
-	public List<String> getUserIds() {
-		return userIds;
-	}
-
-	public void setUserIds(List<String> userIds) {
-		this.userIds = userIds;
 	}
 
 }

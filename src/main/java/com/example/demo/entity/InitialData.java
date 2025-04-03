@@ -5,9 +5,9 @@ import java.util.Optional;
 
 public class InitialData {
 	private Optional<User> userData;
-	private List<Friend> connections;
+	private List<AmountOwed> connections;
 
-	public InitialData(Optional<User> userData2, List<Friend> connections) {
+	public InitialData(Optional<User> userData2, List<AmountOwed> connections) {
 		this.userData = userData2;
 		this.connections = connections;
 	}
@@ -20,11 +20,11 @@ public class InitialData {
 		this.userData = userData;
 	}
 
-	public List<Friend> getConnections() {
+	public List<AmountOwed> getConnections() {
 		return connections;
 	}
 
-	public void setConnections(List<Friend> connections) {
+	public void setConnections(List<AmountOwed> connections) {
 		this.connections = connections;
 	}
 

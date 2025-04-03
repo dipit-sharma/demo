@@ -5,6 +5,6 @@ import org.springframework.stereotype.Repository;
 import com.example.demo.entity.Expense;
 
 @Repository
-public interface ExpenseDao extends JpaRepository<Expense, String> {
+public interface ExpenseDao extends JpaRepository<Expense, Long> {
 
 }
